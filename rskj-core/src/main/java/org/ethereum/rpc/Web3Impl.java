@@ -547,7 +547,7 @@ public class Web3Impl implements Web3 {
         } else if ("pending".equals(bnOrId)) {
             throw unimplemented("The method don't support 'pending' as a parameter yet");
         } else {
-            long bn = JSonHexToLong(bnOrId);
+            long bn = jsonHexToLong(bnOrId);
             b = blockchain.getBlockByNumber(bn);
         }
 
@@ -701,7 +701,7 @@ public class Web3Impl implements Web3 {
                 return null;
             }
 
-            int idx = JSonHexToInt(index);
+            int idx = jsonHexToInt(index);
 
             if (idx >= b.getTransactionsList().size()) {
                 return null;
@@ -726,7 +726,7 @@ public class Web3Impl implements Web3 {
                 return null;
             }
 
-            int idx = JSonHexToInt(index);
+            int idx = jsonHexToInt(index);
             List<Transaction> txs = web3InformationRetriever.getTransactions(bnOrId);
             if (idx >= txs.size()) {
                 return null;
@@ -782,7 +782,7 @@ public class Web3Impl implements Web3 {
     }
 
     private BlockResultDTO getUncleResultDTO(String uncleIdx, Block block) {
-        int idx = JSonHexToInt(uncleIdx);
+        int idx = jsonHexToInt(uncleIdx);
 
         if (idx >= block.getUncleList().size()) {
             return null;

@@ -394,6 +394,7 @@ public class Web3ImplScoringTest {
                 null,
                 null,
                 null,
+                null,
                 null);
     }
 

@@ -1508,7 +1508,7 @@ public class RskContext implements NodeBootstrapper {
         return ethModuleTransaction;
     }
 
-    private SyncProcessor getSyncProcessor() {
+    protected SyncProcessor getSyncProcessor() {
         if (syncProcessor == null) {
             syncProcessor = new SyncProcessor(
                     getBlockchain(),

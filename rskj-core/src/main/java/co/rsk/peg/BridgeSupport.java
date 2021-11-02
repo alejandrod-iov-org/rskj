@@ -2504,6 +2504,17 @@ public class BridgeSupport {
         return activations.isActive(RSKIP271) ? provider.getNextPegoutHeight().orElse(0L) : 0L;
     }
 
+    public int getQueuedPegoutsCount() {
+        if (activations.isActive(RSKIP271)) {
+            try {
+                return provider.getReleaseRequestQueue().getEntries().size();
+            } catch (IOException e) {
+                logger.error("Unexpected error accessing storage while attempting to get release requests size", e);
+            }
+        }
+        return 0;
+    }
+
     public BigInteger registerFastBridgeBtcTransaction(
         Transaction rskTx,
         byte[] btcTxSerialized,
